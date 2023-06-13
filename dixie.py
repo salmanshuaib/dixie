@@ -6,16 +6,20 @@
 5. A TEXT FILE "file_contents.txt" WILL BE GENERATED THAT YOU CAN USE TO CONVERSE IN CODE WITH ChatGPT.
 '''
 
+
 import os
+import tkinter as tk
+from tkinter import messagebox
 
 def search_files(folder_path, files):
     file_contents = {}
-    for file in files:
-        file_path = os.path.join(folder_path, file)
-        if os.path.isfile(file_path):
-            with open(file_path, 'r') as f:
-                content = f.read()
-                file_contents[file] = content
+    for root, _, filenames in os.walk(folder_path):
+        for file in filenames:
+            if file in files:
+                file_path = os.path.join(root, file)
+                with open(file_path, 'r') as f:
+                    content = f.read()
+                    file_contents[file] = content
     return file_contents
 
 def write_contents_to_file(file_contents):
@@ -23,15 +27,28 @@ def write_contents_to_file(file_contents):
         for file, content in file_contents.items():
             f.write(f"**{file}:\n{content}\n\n")
 
-def main():
-    folder_path = os.path.join(os.getcwd(), 'frisky')
-    requested_files = input("Enter the file names (separated by commas): ").split(",")
-    requested_files = [file.strip() for file in requested_files]
+def submit_form():
+    folder_path = os.path.join(os.getcwd(), 'flask')
+    requested_files = entry.get()
+    requested_files = [file.strip() for file in requested_files.split(",")]
 
     file_contents = search_files(folder_path, requested_files)
     write_contents_to_file(file_contents)
 
-    print("File contents have been written to 'file_contents.txt'.")
+    messagebox.showinfo("Success", "File contents have been written to 'file_contents.txt'.")
+    window.destroy()
 
-if __name__ == '__main__':
-    main()
+window = tk.Tk()
+window.title("File Search")
+window.geometry("600x200")  # Adjusted the window size
+
+label = tk.Label(window, text="Enter the file names (separated by commas):")
+label.pack()
+
+entry = tk.Entry(window, width=60)
+entry.pack(pady=20)
+
+submit_button = tk.Button(window, text="Submit", command=submit_form)
+submit_button.pack()
+
+window.mainloop()
