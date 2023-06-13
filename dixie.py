@@ -3,6 +3,7 @@
 2. REPLACE FOLDER NAME "frisky" IN dixie.py WITH THE FOLDER YOU WANT TO SEARCH: SUCH AS "flask".
 3. RUN dixie.py.
 4. ENTER THE NAMES OF THE FILES YOU WANT TO SEARCH FOR, SEPARATED BY COMMAS (e.g., cont.html, jessie.py, random.js).
+5. A TEXT FILE "file_contents.txt" WILL BE GENERATED THAT YOU CAN USE TO CONVERSE IN CODE WITH ChatGPT.
 '''
 
 import os
