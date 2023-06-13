@@ -1,11 +1,3 @@
-'''
-1. PUT dixie.py AT THE ROOT OF THE FOLDER STRUCTURE YOU WANT TO SEARCH, I.E. ONE LEVEL ABOVE THE FOLDER YOU WANT TO SEARCH.
-2. RUN dixie.py.
-3. ENTER THE NAMES OF THE FILES YOU WANT TO SEARCH FOR, SEPARATED BY COMMAS (e.g., cont.html, jessie.py, random.js).
-4. A TEXT FILE "file_contents.txt" WILL BE GENERATED THAT YOU CAN USE TO CONVERSE IN CODE WITH ChatGPT.
-'''
-
-
 import os
 import tkinter as tk
 from tkinter import messagebox
@@ -24,9 +16,9 @@ def search_files(folder_path, files):
 def write_contents_to_file(file_contents):
     with open('file_contents.txt', 'w') as f:
         for file, content in file_contents.items():
-            f.write(f"**{file}:\n{content}\n\n")
+            f.write(f"**{file}:\n{content.strip()}")
 
-def submit_form():
+def submit_form(event=None):
     folder_name = folder_entry.get()
     folder_path = os.path.join(os.getcwd(), folder_name)
     requested_files = entry.get()
@@ -60,5 +52,7 @@ entry.pack(pady=10)
 
 submit_button = tk.Button(window, text="Submit", command=submit_form)
 submit_button.pack()
+
+window.bind('<Return>', submit_form)  # Bind the <Return> event to the submit_form function
 
 window.mainloop()
