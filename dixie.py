@@ -34,7 +34,7 @@ def write_contents_to_file(file_contents):
     """
     with open('file_contents.txt', 'w') as f:
         for file, content in file_contents.items():
-            f.write(f"**{file}:\n{content.strip()}")
+            f.write(f"**{file}:\n{content.strip()}\n\n")
 
 def save_search_history(folder_name, file_names):
     """
