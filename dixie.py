@@ -41,8 +41,9 @@ def write_contents_to_file(file_contents):
     Each file's content is preceded by the file name.
     """
     with open('file_contents.txt', 'w') as f:
+        f.write("***Codebase:")
         for file, content in file_contents.items():
-            f.write(f"**{file}:\n{content.strip()}\n\n")
+            f.write(f"\n\n**{file}:-\n{content.strip()}")
 
 def save_search_history(folder_name, file_names):
     """
