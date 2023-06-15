@@ -1,3 +1,11 @@
+'''
+1. PUT dixie.py AT THE ROOT OF THE FOLDER STRUCTURE YOU WANT TO SEARCH, I.E. ONE LEVEL ABOVE THE FOLDER YOU WANT TO SEARCH.
+2. RUN dixie.py.
+3. ENTER THE NAMES OF THE FILES YOU WANT TO SEARCH FOR, SEPARATED BY COMMAS (e.g., cont.html, jessie.py, random.js).
+4. A TEXT FILE "file_contents.txt" WILL BE GENERATED THAT YOU CAN USE TO CONVERSE IN CODE WITH ChatGPT.
+'''
+
+
 import os
 import tkinter as tk
 from tkinter import messagebox
